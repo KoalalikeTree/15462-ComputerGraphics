@@ -133,6 +133,15 @@ class SoftwareRendererImp : public SoftwareRenderer {
   // resolve samples to render target
   void resolve( void );
 
+  std::vector<unsigned char> sample_buffer; int w; int h;
+  inline void clear_sample_buffer() {
+      sample_buffer.clear();
+      sample_buffer.resize(4 * this->w * this->h);
+  }
+
+  void fill_sample(int sx, int sy, const Color& c);
+  void fill_pixel(int x, int y, const Color& c);
+
 }; // class SoftwareRendererImp
 
 
